@@ -1,5 +1,5 @@
 import requests
-import lgpioa as lg
+import lgpio as lg
 
 sensorPin = 11 # define sensorPin
 
