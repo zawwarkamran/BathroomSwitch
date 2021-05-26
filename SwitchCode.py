@@ -33,6 +33,8 @@ if __name__ == '__main__': # Program entrance
 	setup()
 	try:
 		pass
-		loop()
+		#loop()
+		print(nonleaf_dict)
+		print(1)
 	except KeyboardInterrupt: # Press ctrl-c to end the program.
 		destroy()
