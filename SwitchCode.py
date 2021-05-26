@@ -1,18 +1,18 @@
 import requests
-import lgpio as lg
+import RPi.GPIO as GPIO
 
 sensorPin = 11 # define sensorPin
 
 def setup():
-	#GPIO.setmode(GPIO.BOARD)
+	GPIO.setmode(GPIO.BOARD)
 	#GPIO.setup(ledPin, GPIO.OUT)
-	#GPIO.setup(sensorPin, GPIO.IN) # set sensorPin to INPUT mode
-	h= lgpio.gpiochip_open(0)
-	lg.gpio_claim_input(h, sensorPin)
+	GPIO.setup(sensorPin, GPIO.IN) # set sensorPin to INPUT mode
+	#h = lgpio.gpiochip_open(0)
+	#lg.gpio_claim_input(h, sensorPin)
 
 def loop():	
 	while True:
-		if GPIO.input(sensorPin)==GPIO.HIGH: 
+		if GPIO.input(sensorPin) == GPIO.HIGH: 
 			#GPIO.output(ledPin,GPIO.HIGH) # turn on led 
 			print ('led turned on >>>')
 		else :
