@@ -7,7 +7,7 @@ def setup():
 	#GPIO.setmode(GPIO.BOARD)
 	#GPIO.setup(ledPin, GPIO.OUT)
 	#GPIO.setup(sensorPin, GPIO.IN) # set sensorPin to INPUT mode
-	h = lgpio.gpio_open(0)
+	h = lgpio.gpiochip_open(0)
 	lgpio.gpio_claim_input(h, sensorPin)
 
 def loop():	
