@@ -1,5 +1,10 @@
 import requests
 import RPi.GPIO as GPIO
+from nanoleafapi import discovery
+
+nonleaf_dict = discovery.discover_devices()
+print(nonleaf_dict)
+
 
 sensorPin = 11 # define sensorPin
 
