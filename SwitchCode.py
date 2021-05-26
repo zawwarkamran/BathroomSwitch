@@ -32,6 +32,7 @@ if __name__ == '__main__': # Program entrance
 	print('Program is starting...')
 	setup()
 	try:
+		pass
 		loop()
 	except KeyboardInterrupt: # Press ctrl-c to end the program.
 		destroy()
