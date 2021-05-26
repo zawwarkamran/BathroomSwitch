@@ -1,12 +1,11 @@
 import requests
 import RPi.GPIO as GPIO
-from nanoleafapi import discovery
-
-nonleaf_dict = discovery.discover_devices()
-print(nonleaf_dict)
-
+from nanoleafapi import discovery, Nanoleaf
+import time
 
 sensorPin = 11 # define sensorPin
+nl = Nanoleaf('192.168.2.207')
+
 
 def setup():
 	GPIO.setmode(GPIO.BOARD)
@@ -20,9 +19,12 @@ def loop():
 		if GPIO.input(sensorPin) == GPIO.HIGH: 
 			#GPIO.output(ledPin,GPIO.HIGH) # turn on led 
 			print ('led turned on >>>')
+			nl.power_on()
+			time.sleep(300)
 		else :
 			#GPIO.output(ledPin,GPIO.LOW) # turn off led 
 			print ('led turned off <<<')
+			nl.power_off()
 
 def destroy():
 	GPIO.cleanup() # Release GPIO resource
@@ -32,8 +34,6 @@ if __name__ == '__main__': # Program entrance
 	print('Program is starting...')
 	setup()
 	try:
-		#loop()
-		print(nonleaf_dict)
-		print(1)
+		loop()
 	except KeyboardInterrupt: # Press ctrl-c to end the program.
 		destroy()
