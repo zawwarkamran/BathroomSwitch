@@ -1,5 +1,5 @@
 import requests
-import RPi.GPIO as GPIO
+import lgpio
 
 sensorPin = 11 # define sensorPin
 
@@ -7,6 +7,8 @@ def setup():
 	GPIO.setmode(GPIO.BOARD)
 	#GPIO.setup(ledPin, GPIO.OUT)
 	GPIO.setup(sensorPin, GPIO.IN) # set sensorPin to INPUT mode
+	h = lgpio.gpio_open(0)
+	lgpio.gpio_claim_input(h, sensorPin)
 
 def loop():	
 	while True:
