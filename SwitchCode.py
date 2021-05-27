@@ -1,11 +1,9 @@
 import requests
 import RPi.GPIO as GPIO
-from nanoleafapi import discovery, Nanoleaf
 import time
 import tinytuya
 
 sensorPin = 11 # define sensorPin
-nl = Nanoleaf('192.168.2.207')
 
 livroom = tinytuya.OutletDevice('eb0e2c8010a4d16a9cs5xt', '192.168.2.242', '1fbc6ff66d77f13d')
 livroom.set_version(3.3)
