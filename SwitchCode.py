@@ -2,9 +2,14 @@ import requests
 import RPi.GPIO as GPIO
 from nanoleafapi import discovery, Nanoleaf
 import time
+import tinytuya
 
 sensorPin = 11 # define sensorPin
 nl = Nanoleaf('192.168.2.207')
+
+livroom = tinytuya.OutletDevice('eb0e2c8010a4d16a9cs5xt', '192.168.2.242', '1fbc6ff66d77f13d')
+livroom.set_version(3.3)
+
 
 
 def setup():
@@ -19,12 +24,12 @@ def loop():
 		if GPIO.input(sensorPin) == GPIO.HIGH: 
 			#GPIO.output(ledPin,GPIO.HIGH) # turn on led 
 			print ('led turned on >>>')
-			nl.power_on()
+			livroom.turn_on()
 			time.sleep(300)
 		else :
 			#GPIO.output(ledPin,GPIO.LOW) # turn off led 
 			print ('led turned off <<<')
-			nl.power_off()
+			livroom.turn_off()
 
 def destroy():
 	GPIO.cleanup() # Release GPIO resource
