@@ -23,7 +23,7 @@ def loop():
 			#GPIO.output(ledPin,GPIO.HIGH) # turn on led 
 			print ('led turned on >>>')
 			livroom.turn_on()
-			time.sleep(300)
+			time.sleep(10)
 		else :
 			#GPIO.output(ledPin,GPIO.LOW) # turn off led 
 			print ('led turned off <<<')
