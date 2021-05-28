@@ -9,7 +9,6 @@ def switch():
 	while True:
 		response = requests.get("http://192.168.2.229")
 		motion_data = json.loads(response.text)
-		print(motion_data['variables']['motion'])
 		state = motion_data['variables']['motion']
 		if state == 1:
 			nl.power_on()
