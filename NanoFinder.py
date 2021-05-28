@@ -21,5 +21,5 @@ def switch():
 if __name__ == '__main__':
 	try:
 		switch()
-	except as e:
+	except Exception as e:
 		print(e)
