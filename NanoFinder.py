@@ -18,7 +18,7 @@ def switch():
 			nl.power_off()
 
 if __name__ == '__main__':
-	while true:
+	while True:
 		try:
 			switch()
 		except:
