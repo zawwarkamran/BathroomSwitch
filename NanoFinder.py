@@ -7,7 +7,7 @@ nl = Nanoleaf("192.168.2.218")
 
 while True:
 	response = requests.get("http://192.168.2.229")
-	print(response.text['variables']['motion'])
+	print(type(response.text))
 	state = response.content['motion']
 	if state == 1:
 		nl.power_off()
