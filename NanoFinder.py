@@ -19,7 +19,9 @@ def switch():
 			nl.power_off()
 
 if __name__ == '__main__':
-	try:
-		switch()
-	except Exception as e:
-		print(e)
+	while True:
+		try:
+			switch()
+		except Exception as e:
+			print(e)
+			pass
