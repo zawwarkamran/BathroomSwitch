@@ -7,6 +7,7 @@ nl = Nanoleaf("192.168.2.218")
 
 def switch():
 	while True:
+		time.sleep(0.01)
 		response = requests.get("http://192.168.2.229")
 		motion_data = json.loads(response.text)
 		state = motion_data['variables']['motion']
@@ -19,9 +20,7 @@ def switch():
 			nl.power_off()
 
 if __name__ == '__main__':
-	while True:
-		try:
-			switch()
-		except Exception as e:
-			print(e)
-			pass
+	try:
+		switch()
+	except Exception as e:
+		print(e)
