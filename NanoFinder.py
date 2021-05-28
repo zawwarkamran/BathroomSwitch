@@ -5,16 +5,21 @@ import json
 
 nl = Nanoleaf("192.168.2.218")
 
+def switch():
+	while True:
+		response = requests.get("http://192.168.2.229")
+		motion_data = json.loads(response.text)
+		print(motion_data['variables']['motion'])
+		state = motion_data['variables']['motion']
+		if state == 1:
+			nl.power_off()
+			print("turning off")
+			time.sleep(5)
+		else:
+			nl.power_on()
 
-while True:
-	response = requests.get("http://192.168.2.229")
-	motion_data = json.loads(response.text)
-	print(motion_data['variables']['motion'])
-	state = motion_data['variables']['motion']
-	if state == 1:
-		nl.power_off()
-		print("turning off")
-		time.sleep(5)
-	else:
-		nl.power_on()
-
+if __name__ == '__main__':
+	try:
+		switch()
+	except:
+		print("Error")
