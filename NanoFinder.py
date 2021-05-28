@@ -3,6 +3,7 @@ import time
 import requests
 
 nl = Nanoleaf("192.168.2.218")
+
 def switch():
 	while True:
 		response = requests.get("http://192.168.2.229")
