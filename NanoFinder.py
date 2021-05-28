@@ -12,11 +12,11 @@ def switch():
 		print(motion_data['variables']['motion'])
 		state = motion_data['variables']['motion']
 		if state == 1:
-			nl.power_off()
+			nl.power_on()
 			print("turning off")
 			time.sleep(5)
 		else:
-			nl.power_on()
+			nl.power_off()
 
 if __name__ == '__main__':
 	try:
