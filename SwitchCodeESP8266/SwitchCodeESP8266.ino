@@ -48,18 +48,20 @@ void loop() {
 
   long state = digitalRead(PIRsensor);
   
-//  if (state == HIGH){
-//    Serial.println("motion");
-//    digitalWrite(LED_BUILTIN, LOW);
-//    }
-//    else {
-//      Serial.println("no motion");
-//      digitalWrite(LED_BUILTIN, HIGH);
-//    }
+  if (state == HIGH){
+    Serial.println("motion");
+    digitalWrite(LED_BUILTIN, LOW);
+    motion = 1;
+    }
+    else {
+      Serial.println("no motion");
+      digitalWrite(LED_BUILTIN, HIGH);
+      motion = 0;
+    }
     
   WiFiClient client = server.available();
   if (!client) {
-  return state;
+  return;
   }
   while(!client.available()){
   delay(1);
