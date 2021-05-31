@@ -22,9 +22,9 @@ async def switch():
 	while True:
 		time.sleep(0.01)
 		response = requests.get("http://192.168.2.229")
-		p = kasa.SmartDimmer("192.168.2.233")
-		await p.update()
-		motion_data = json.loads(response.text)
+		# p = kasa.SmartDimmer("192.168.2.233")
+		# await p.update()
+		# motion_data = json.loads(response.text)
 		state = motion_data['variables']['motion']
 		print(state)
 		if state == 1:
