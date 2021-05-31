@@ -27,12 +27,13 @@ async def switch():
 		motion_data = json.loads(response.text)
 		state = motion_data['variables']['motion']
 		print(state)
-		# if state == 1:
-		# 	# await p.turn_on()
-		# 	print("turning bathroom light on")
-		# 	time.sleep(5)
-		# else:
-		# 	await p.turn_off()
+		if state == 1:
+			# await p.turn_on()
+			print("turning bathroom light on")
+			time.sleep(5)
+		else:
+			print('turning off')
+			# await p.turn_off()
 
 if __name__ == '__main__':
 	try:
