@@ -2,9 +2,11 @@ from nanoleafapi import discovery, Nanoleaf
 import time
 import requests
 import json
+import kasa
 
 nl = Nanoleaf("192.168.2.218")
-
+kasa1 = kasa.SmartDimmer("192.168.2.233")
+await kasa1.update()
 def switch():
 	while True:
 		time.sleep(0.01)
@@ -20,6 +22,7 @@ def switch():
 			nl.power_off()
 
 if __name__ == '__main__':
+	print(kasa1.alias)
 	try:
 		switch()
 	except Exception as e:
