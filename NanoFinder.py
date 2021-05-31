@@ -23,7 +23,10 @@ def switch():
 
 if __name__ == '__main__':
 	print(kasa1.alias)
-	try:
-		switch()
-	except Exception as e:
-		print(e)
+	kasa1.turn_on()
+	time.sleep(5)
+	kasa1.turn_off()
+	# try:
+	# 	switch()
+	# except Exception as e:
+	# 	print(e)
