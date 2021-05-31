@@ -7,6 +7,7 @@ import kasa
 nl = Nanoleaf("192.168.2.218")
 kasa1 = kasa.SmartDimmer("192.168.2.233")
 await kasa1.update()
+print(kasa1.alias)
 def switch():
 	while True:
 		time.sleep(0.01)
