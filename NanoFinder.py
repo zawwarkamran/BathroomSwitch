@@ -30,7 +30,7 @@ async def switch():
 		if state == 1:
 			await p.turn_on()
 			# print("turning bathroom light on")
-			time.sleep(5)
+			time.sleep(1805)
 		else:
 			# print('turning off')
 			await p.turn_off()
