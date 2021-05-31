@@ -41,10 +41,7 @@ def switch():
 			nl.power_off()
 
 if __name__ == '__main__':
-	print(kasa1.alias)
-	kasa1.turn_on()
-	time.sleep(5)
-	kasa1.turn_off()
+	asyncio.run(kasafunc())
 	# try:
 	# 	switch()
 	# except Exception as e:
