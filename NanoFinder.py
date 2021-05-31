@@ -12,11 +12,16 @@ print(kasa1.alias)
 
 async def kasafunc():
 	p = kasa.SmartDimmer("192.168.2.233")
-	
-    await p.update()
-    print(p.alias)
+	await p.update()
+	print(p.alias)
 
-    await p.turn_off()
+	await p.turn_on()
+
+	time.sleep(10)
+
+	await p.turn_off()
+
+
 
 
 
