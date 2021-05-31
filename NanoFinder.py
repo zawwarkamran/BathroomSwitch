@@ -6,9 +6,6 @@ import kasa
 import asyncio
 
 nl = Nanoleaf("192.168.2.218")
-kasa1 = kasa.SmartDimmer("192.168.2.233")
-kasa1.update()
-print(kasa1.alias)
 
 async def kasafunc():
 	p = kasa.SmartDimmer("192.168.2.233")
