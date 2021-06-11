@@ -11,6 +11,7 @@ aREST rest = aREST();
 #define LISTEN_PORT           80
 
 WiFiServer server(LISTEN_PORT);
+WiFi.hostname("ESP8266Bathroom");
 
 void setup(void) {
   // initialize digital pin LED_BUILTIN as an output.
