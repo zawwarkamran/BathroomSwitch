@@ -9,9 +9,7 @@ app = Flask(__name__)
 found_devices = asyncio.run(kasa.Discover.discover())
 print(found_devices)
 
-
-
-@app.route("/send", methods=['POST'])
+@app.route("/")
 def home():
 	status = requests.get("http://192.168.2.229")
 	status = json.loads(status.text)
