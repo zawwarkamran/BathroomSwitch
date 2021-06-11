@@ -5,7 +5,7 @@ import asyncio
 # from automationfuncs import switch_on, switch_off
 app = Flask(__name__)
 
-found_devices = asyncio.run(Discover.discover())
+found_devices = asyncio.run(kasa.Discover.discover())
 print(found_devices)
 
 
