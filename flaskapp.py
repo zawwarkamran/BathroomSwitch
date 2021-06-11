@@ -10,7 +10,8 @@ found_devices = asyncio.run(kasa.Discover.discover())
 print(found_devices)
 
 
-@app.route('/')
+
+@app.route("/send", methods=['POST'])
 def home():
 	status = requests.get("http://192.168.2.229")
 	status = json.loads(status.text)
@@ -22,6 +23,9 @@ def home():
 	else:
 		for k,v in found_devices.items():
 			asyncio.run(switch_off())
+@app.route('/')
+def main():
+	return 'Running'
 
 if __name__ == '__main__':
 	app.run(debug=True, host="0.0.0.0")
