@@ -6,7 +6,7 @@ import asyncio
 app = Flask(__name__)
 
 found_devices = asyncio.run(kasa.Discover.discover())
-print(found_devices[0])
+print(found_devices)
 
 
 @app.route('/')
