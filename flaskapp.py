@@ -16,7 +16,7 @@ def home():
 	status = json.loads(status.text)
 	state = status['variables']['motion']
 	print(state)
-	if motion == 1:
+	if state == 1:
 		for k,v in found_devices.items():
 			asyncio.run(switch_on(k))
 	else:
