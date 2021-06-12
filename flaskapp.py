@@ -2,7 +2,7 @@ from flask import Flask
 import kasa
 import json
 import asyncio
-import time
+import time, sched
 from automationfuncs import switch_on, switch_off
 from waitress import serve
 import grequests
