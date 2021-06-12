@@ -19,7 +19,7 @@ def on():
 	for k,v in found_devices.items():
 		asyncio.run(switch_on(k))
 	print('a:{}'.format(counter))
-	a = grequests.get('http://192.168.2.228:5000/b')
+	a = [grequests.get('http://192.168.2.228:5000/b')]
 	grequests.map(a)
 	return 'on'
 
