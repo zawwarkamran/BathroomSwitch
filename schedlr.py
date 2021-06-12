@@ -7,6 +7,7 @@ def print_time(a='default'):
 
 def print_some_times():
     print(time.time())
+    print(is s.empty())
     s.enter(10, 1, print_time)
     s.enter(5, 2, print_time, argument=('positional',))
     s.enter(5, 1, print_time, kwargs={'a': 'keyword'})

@@ -8,19 +8,25 @@ from waitress import serve
 import grequests
 app = Flask(__name__)
 counter = 0
+s = sched.scheduler(time.time, time.sleep)
 
 found_devices = asyncio.run(kasa.Discover.discover())
-print(found_devices)
 
 @app.route('/a')
 def on():
 	global counter
 	counter += 1
-	for k,v in found_devices.items():
-		asyncio.run(switch_on(k))
+	if s.empty():
+		for k,v in found_devices.items():
+			s.enter(10, 1, asyncio.run(switch_on(k)))
+			s.run()
+	else:
+		s.cancel()
+		for k,v in found_devices.items():
+			s.enter(10, 1, asyncio.run(switch_on(k)))
+			s.run()
+
 	print('a:{}'.format(counter))
-	a = [grequests.get('http://192.168.2.228:5000/b')]
-	grequests.map(a)
 	return 'on'
 
 @app.route('/b')
