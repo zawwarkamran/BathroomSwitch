@@ -13,11 +13,7 @@ print(found_devices)
 def home():
 	for k,v in found_devices:
 		asyncio.run(switch_on(k))
-
-@app.route('/b')
-def home():
-	for k,v in found_devices:
-		asyncio.run(switch_off(k))
+	return 'switch'
 	
 
 @app.route('/')
