@@ -21,6 +21,7 @@ def home():
 	else:
 		for k,v in found_devices.items():
 			asyncio.run(switch_off(switch_ip=k))
+	return 'hi'
 
 @app.route('/')
 def main():
