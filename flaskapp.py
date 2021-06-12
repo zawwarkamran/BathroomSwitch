@@ -17,6 +17,8 @@ def on():
 	global counter
 	counter += 1
 	global s
+	for k,v in found_devices.items():
+		asyncio.run(switch_on(k))
 	if s.empty():
 		for k,v in found_devices.items():
 			asyncio.run(switch_on(k))
