@@ -19,12 +19,13 @@ def on():
 	global s
 	if s.empty():
 		for k,v in found_devices.items():
-			s.enter(10, 1, action = switch_on, kwargs={'switch_ip': k})
+			asyncio.run(switch_on(k))
+			s.enter(10, 1, action = switch_off, kwargs={'switch_ip': k})
 			s.run()
 	else:
 		s.cancel(s)
 		for k,v in found_devices.items():
-			s.enter(10, 1, action = switch_on, kwargs={'switch_ip': k})
+			s.enter(10, 1, action = switch_off, kwargs={'switch_ip': k})
 			s.run()
 
 	print('a:{}'.format(counter))
