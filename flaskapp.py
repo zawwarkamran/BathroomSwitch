@@ -19,13 +19,13 @@ def on():
 	global s
 	if s.empty():
 		for k,v in found_devices.items():
-			s.enter(10, 1, action = switch_on, kwargs={'switch_ip': k})
-			s.run()
+			event = s.enter(10, 1, action = switch_on, kwargs={'switch_ip': k})
+			event.run()
 	else:
-		s.cancel()
+		s.cancel(event)
 		for k,v in found_devices.items():
-			s.enter(10, 1, action = switch_on, kwargs={'switch_ip': k})
-			s.run()
+			event = s.enter(10, 1, action = switch_on, kwargs={'switch_ip': k})
+			event = s.run()
 
 	print('a:{}'.format(counter))
 	return 'on'
