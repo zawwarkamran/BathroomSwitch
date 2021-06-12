@@ -3,6 +3,7 @@ import requests
 import kasa
 import json
 import asyncio
+import time
 from automationfuncs import switch_on, switch_off
 app = Flask(__name__)
 
@@ -13,6 +14,7 @@ print(found_devices)
 def on():
 	for k,v in found_devices.items():
 		asyncio.run(switch_on(k))
+	time.sleep(10)
 	return 'switch_on'
 
 @app.route('/b')
