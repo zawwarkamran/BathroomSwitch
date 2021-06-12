@@ -15,13 +15,9 @@ def on():
 	for k,v in found_devices.items():
 		asyncio.run(switch_on(k))
 	time.sleep(10)
-	return 'switch_on'
-
-@app.route('/b')
-def off():
 	for k,v in found_devices.items():
-		asyncio.run(switch_off(k))
-	return 'switch_off'
+		asyncio.run(switch_on(k))
+	return 'switch'
 	
 
 @app.route('/')
