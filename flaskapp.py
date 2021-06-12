@@ -21,7 +21,6 @@ def on():
 		asyncio.run(switch_on(k))
 	if s.empty():
 		for k,v in found_devices.items():
-			asyncio.run(switch_on(k))
 			s.enter(10, 1, action = switch_off, kwargs={'switch_ip': k})
 			s.run()
 	else:
