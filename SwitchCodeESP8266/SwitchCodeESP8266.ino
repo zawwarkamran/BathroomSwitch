@@ -45,7 +45,7 @@ void loop() {
     HTTPClient http;
     http.begin(wifiClient,"http://192.168.2.228:5000/a");
     int httpCode = http.GET();
-    delay(60000);
+    delay(1000);
     }
 
     else{
