@@ -17,10 +17,10 @@ def home():
 	print(state)
 	if state == 1:
 		for k,v in found_devices.items():
-			asyncio.run(switch_on(k))
+			asyncio.run(switch_on(switch_ip=k))
 	else:
 		for k,v in found_devices.items():
-			asyncio.run(switch_off())
+			asyncio.run(switch_off(switch_ip=k))
 
 @app.route('/')
 def main():
