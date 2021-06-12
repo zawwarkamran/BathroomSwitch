@@ -3,7 +3,7 @@ import requests
 import kasa
 import json
 import asyncio
-# from automationfuncs import switch_on, switch_off
+from automationfuncs import switch_on, switch_off
 app = Flask(__name__)
 
 found_devices = asyncio.run(kasa.Discover.discover())
