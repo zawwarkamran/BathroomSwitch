@@ -1,5 +1,5 @@
 from nanoleafapi import discovery, Nanoleaf 
-import time
+import sched, time
 import requests
 import json
 import kasa
