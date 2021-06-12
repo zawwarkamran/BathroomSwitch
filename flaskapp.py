@@ -10,10 +10,16 @@ found_devices = asyncio.run(kasa.Discover.discover())
 print(found_devices)
 
 @app.route('/a')
-def home():
+def on():
 	for k,v in found_devices.items():
 		asyncio.run(switch_on(k))
-	return 'switch'
+	return 'switch_on'
+
+@app.route('/b')
+def off():
+	for k,v in found_devices.items():
+		asyncio.run(switch_off(k))
+	return 'switch_off'
 	
 
 @app.route('/')
