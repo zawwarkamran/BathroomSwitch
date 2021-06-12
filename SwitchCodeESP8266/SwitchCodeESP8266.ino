@@ -1,17 +1,10 @@
 #include <ESP8266WiFi.h>
-#include <aREST.h>
-#include <HTTPRequest.hpp>
+#include <ESP8266HTTPClient.h>
 
 // D7 is the PIR sensor so we define the pin there
 int PIRsensor = 13;
 int motion = 0;
-
-// Create the aREST instance
-aREST rest = aREST();
-
-#define LISTEN_PORT           80
-
-WiFiServer server(LISTEN_PORT);
+WiFiClient wifiClient;
 
 void setup(void) {
   // initialize digital pin LED_BUILTIN as an output.
@@ -19,10 +12,6 @@ void setup(void) {
   pinMode(LED_BUILTIN, OUTPUT);
   
   Serial.begin(9600);
-
-  rest.variable("motion",&motion);
-  rest.set_id("1");
-  rest.set_name("motion_sensor_module");
   
   WiFi.begin("edbtz", "sajwarcho202");
   WiFi.hostname("ESP8266Bathroom");
@@ -37,7 +26,6 @@ void setup(void) {
 
   Serial.print("Connected, IP address: ");
   Serial.println(WiFi.localIP());
-  server.begin();
   Serial.println("server started");
   }
   
@@ -54,19 +42,16 @@ void loop() {
     Serial.println("motion");
     digitalWrite(LED_BUILTIN, LOW);
     motion = 1;
-    try
-{
-    // you can pass http::InternetProtocol::V6 to Request to make an IPv6 request
-    http::Request request{"http:192.168.2.228:5000/a"};
+    HTTPClient http;
+    http.begin(wifiClient,"http://192.168.2.228:5000/a");
+    int httpCode = http.GET();
+    delay(60000);
+    }
 
-    // send a get request
-    const auto response = request.send("GET");
-    std::cout << std::string{response.body.begin(), response.body.end()} << '\n'; // print the result
-}
-catch (const std::exception& e)
-{
-    std::cerr << "Request failed, error: " << e.what() << '\n';
-}
+    else{
+    Serial.println("no motion");
+    digitalWrite(LED_BUILTIN, HIGH);
+    motion = 0;
     }
     
   //WiFiClient client = server.available();
