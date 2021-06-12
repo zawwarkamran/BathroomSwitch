@@ -18,6 +18,11 @@ def on():
 	counter += 1
 	for k,v in found_devices.items():
 		asyncio.run(switch_on(k))
+	if s.empty():
+		for k,v in found_devices.items():
+			s.enter(10, 1, action= switch_off, )
+			s.run()
+	print(s.queue())
 	print('a:{}'.format(counter))
 	return 'on'
 
