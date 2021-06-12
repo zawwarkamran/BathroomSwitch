@@ -16,6 +16,7 @@ found_devices = asyncio.run(kasa.Discover.discover())
 def on():
 	global counter
 	counter += 1
+	global s
 	if s.empty():
 		for k,v in found_devices.items():
 			s.enter(10, 1, asyncio.run(switch_on(k)))
