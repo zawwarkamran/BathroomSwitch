@@ -14,7 +14,7 @@ print(found_devices)
 async def on():
 	for k,v in found_devices.items():
 		asyncio.run(switch_on(k))
-	await async.sleep(10)
+	await asyncio.sleep(10)
 	for k,v in found_devices.items():
 		asyncio.run(switch_off(k))
 	return 'switch'
