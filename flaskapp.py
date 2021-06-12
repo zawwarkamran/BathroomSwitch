@@ -12,7 +12,8 @@ found_devices = asyncio.run(kasa.Discover.discover())
 
 @app.route('/a')
 def on():
-	counter +=  1
+	global counter
+	counter += 1
 	for k,v in found_devices.items():
 		asyncio.run(switch_on(k))
 	timer()
@@ -21,6 +22,7 @@ def on():
 @app.route('/b')
 def timer():
 	time.sleep(10)
+	global counter
 	counter -= 1
 	if counter == 0:
 		for k,v in found_devices.items():
