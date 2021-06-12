@@ -5,6 +5,7 @@ import asyncio
 import time
 from automationfuncs import switch_on, switch_off
 from waitress import serve
+import grequests
 app = Flask(__name__)
 counter = 0
 
@@ -18,7 +19,7 @@ def on():
 	for k,v in found_devices.items():
 		asyncio.run(switch_on(k))
 	print('a:{}'.format(counter))
-	timer()
+	grequests.get('http://192.168.2.228:5000/b')
 	return 'on'
 
 @app.route('/b')

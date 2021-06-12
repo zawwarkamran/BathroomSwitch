@@ -12,6 +12,9 @@ void setup(void) {
   pinMode(LED_BUILTIN, OUTPUT);
   
   Serial.begin(9600);
+
+  HTTPClient http;
+  http.begin(wifiClient,"http://192.168.2.228:5000/a");
   
   WiFi.begin("edbtz", "sajwarcho202");
   WiFi.hostname("ESP8266Bathroom");
@@ -28,11 +31,6 @@ void setup(void) {
   Serial.println(WiFi.localIP());
   Serial.println("server started");
   }
-  
-//void loop() {
-//  Serial.println(WiFi.localIP());
-//}
-
 
 void loop() {
 
@@ -41,25 +39,12 @@ void loop() {
   if (state == HIGH){
     Serial.println("motion");
     digitalWrite(LED_BUILTIN, LOW);
-    motion = 1;
-    HTTPClient http;
-    http.begin(wifiClient,"http://192.168.2.228:5000/a");
-    int httpCode = http.GET();
+    http.GET();
     delay(1000);
     }
 
     else{
     Serial.println("no motion");
     digitalWrite(LED_BUILTIN, HIGH);
-    motion = 0;
     }
-    
-  //WiFiClient client = server.available();
-  //if (!client) {
-  //return;
-  //}
-  //while(!client.available()){
-  //delay(1);
-  //}
-  //rest.handle(client);
 }
