@@ -11,7 +11,7 @@ print(found_devices)
 
 @app.route('/a')
 def home():
-	for k,v in found_devices:
+	for k,v in found_devices.items():
 		asyncio.run(switch_on(k))
 	return 'switch'
 	
