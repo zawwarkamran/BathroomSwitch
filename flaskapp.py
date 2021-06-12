@@ -22,7 +22,7 @@ def on():
 
 @app.route('/b')
 def timer():
-	time.sleep(1)
+	time.sleep(5)
 	global counter
 	counter -= 1
 	if counter == 0:
