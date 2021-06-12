@@ -16,19 +16,8 @@ found_devices = asyncio.run(kasa.Discover.discover())
 def on():
 	global counter
 	counter += 1
-	global s
 	for k,v in found_devices.items():
 		asyncio.run(switch_on(k))
-	if s.empty():
-		for k,v in found_devices.items():
-			s.enter(10, 1, action = switch_off, kwargs={'switch_ip': k})
-			s.run()
-	else:
-		s.cancel(s)
-		for k,v in found_devices.items():
-			s.enter(10, 1, action = switch_off, kwargs={'switch_ip': k})
-			s.run()
-
 	print('a:{}'.format(counter))
 	return 'on'
 
