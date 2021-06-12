@@ -19,12 +19,12 @@ def on():
 	global s
 	if s.empty():
 		for k,v in found_devices.items():
-			s.enter(10, 1, asyncio.run(switch_on(k)))
+			s.enter(10, 1, action=asyncio.run(switch_on(k)))
 			s.run()
 	else:
 		s.cancel()
 		for k,v in found_devices.items():
-			s.enter(10, 1, asyncio.run(switch_on(k)))
+			s.enter(10, 1, action=asyncio.run(switch_on(k)))
 			s.run()
 
 	print('a:{}'.format(counter))
