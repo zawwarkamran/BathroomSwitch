@@ -9,6 +9,7 @@ app = Flask(__name__)
 counter = 0
 
 found_devices = asyncio.run(kasa.Discover.discover())
+print(found_devices)
 
 @app.route('/a')
 def on():
@@ -17,7 +18,7 @@ def on():
 	for k,v in found_devices.items():
 		asyncio.run(switch_on(k))
 	timer()
-	return 'switch'
+	return counter
 
 @app.route('/b')
 def timer():
@@ -29,10 +30,12 @@ def timer():
 			asyncio.run(switch_off(k))
 	return 'timer'
 	
-
 @app.route('/')
 def main():
-	return 'Running'
+	if counter == 0:
+		return 'light_off'
+	else:
+		return 'light_on'
 
 if __name__ == '__main__':
 	serve(app, host="0.0.0.0", port=5000)
