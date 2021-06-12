@@ -23,7 +23,7 @@ def on():
 
 @app.route('/b')
 def timer():
-	time.sleep(4)
+	time.sleep(6)
 	global counter
 	counter -= 1
 	print('b:{}'.format(counter))
