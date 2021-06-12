@@ -18,7 +18,7 @@ def on():
 	for k,v in found_devices.items():
 		asyncio.run(switch_on(k))
 	timer()
-	return counter
+	return 'on'
 
 @app.route('/b')
 def timer():
