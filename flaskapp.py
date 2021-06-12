@@ -11,17 +11,14 @@ print(found_devices)
 
 @app.route('/a')
 def home():
-	status = requests.get("http://192.168.2.229")
-	status = json.loads(status.text)
-	state = status['variables']['motion']
-	print(state)
-	if state == 1:
-		for k,v in found_devices.items():
-			asyncio.run(switch_on(switch_ip=k))
-	else:
-		for k,v in found_devices.items():
-			asyncio.run(switch_off(switch_ip=k))
-	return 'hi'
+	for k,v in found_devices:
+		asyncio.run(switch_on(k))
+
+@app.route('/b')
+def home():
+	for k,v in found_devices:
+		asyncio.run(switch_off(k))
+	
 
 @app.route('/')
 def main():
