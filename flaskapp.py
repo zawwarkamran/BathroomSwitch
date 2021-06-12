@@ -23,7 +23,7 @@ def on():
 		for k,v in found_devices.items():
 			s.enter(10, 1, action= switch_off, kwargs={'switch_ip': k} )
 			s.run()
-	print(s.queue())
+	print(s.queue)
 	print('a:{}'.format(counter))
 	return 'on'
 
