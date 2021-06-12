@@ -11,10 +11,10 @@ found_devices = asyncio.run(kasa.Discover.discover())
 print(found_devices)
 
 @app.route('/a')
-def on():
+async def on():
 	for k,v in found_devices.items():
 		asyncio.run(switch_on(k))
-	time.sleep(10)
+	await async.sleep(10)
 	for k,v in found_devices.items():
 		asyncio.run(switch_off(k))
 	return 'switch'
